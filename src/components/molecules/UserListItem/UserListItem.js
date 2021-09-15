@@ -7,7 +7,10 @@ import {
   Wrapper,
 } from 'components/molecules/UserListItem/UserListItem.styles';
 
-const UserListItem = ({ userData: { average, name, attendance = '0%' } }) => {
+const UserListItem = ({
+  deleteUser,
+  userData: { average, name, attendance = '0%' },
+}) => {
   return (
     <Wrapper>
       <StyledAverage value={average}>{average}</StyledAverage>
@@ -15,7 +18,7 @@ const UserListItem = ({ userData: { average, name, attendance = '0%' } }) => {
         <p>{name}</p>
         <p>attendance: {attendance}</p>
       </StyledInfo>
-      <Button />
+      <Button onClick={() => deleteUser(name)} />
     </Wrapper>
   );
 };
