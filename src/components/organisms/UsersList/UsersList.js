@@ -1,24 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import UsersListItem from 'components/molecules/UsersListItem/UsersListItem.js';
-import { StyledList, StyledTitle, Wrapper } from './UsersList.styles';
+import { StyledList } from './UsersList.styles';
 import { UserShape } from 'types';
+import { Title } from '../../atoms/Title/Title';
 
 const UsersList = ({ users, deleteUser }) => {
   return (
     <>
-      <Wrapper>
-        <StyledTitle>Students list</StyledTitle>
-        <StyledList>
-          {users.map((userData) => (
-            <UsersListItem
-              deleteUser={deleteUser}
-              key={userData.name}
-              userData={userData}
-            />
-          ))}
-        </StyledList>
-      </Wrapper>
+      <Title>Students list</Title>
+      <StyledList>
+        {users.map((userData) => (
+          <UsersListItem
+            deleteUser={deleteUser}
+            key={userData.name}
+            userData={userData}
+          />
+        ))}
+      </StyledList>
     </>
   );
 };
