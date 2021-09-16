@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import UsersList from 'components/organisms/UsersList/UsersList';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from 'assets/styles/GlobalStyle';
 import { theme } from 'assets/styles/theme';
 import { Wrapper } from './Root.styles';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Form from 'components/organisms/Form/Form';
 import { users as usersData } from 'data/users';
 import MainTemplate from '../components/templates/MainTemplate/MainTemplate';
+import AddUser from './AddUser';
+import Dashboard from './Dashboard';
 
 const initialFormState = {
   name: '',
@@ -52,14 +52,14 @@ const Root = () => {
           <Wrapper>
             <Switch>
               <Route path="/add-user">
-                <Form
+                <AddUser
                   formValues={formValues}
                   handleAddUser={handleAddUser}
                   handleInputChange={handleInputChange}
                 />
               </Route>
               <Route path="/">
-                <UsersList deleteUser={deleteUser} users={users} />
+                <Dashboard deleteUser={deleteUser} users={users} />
               </Route>
             </Switch>
           </Wrapper>
