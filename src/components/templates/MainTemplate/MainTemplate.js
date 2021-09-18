@@ -10,13 +10,7 @@ const MainTemplate = ({ children }) => {
       <Navigation />
       <SearchBar />
       {children}
-      <NewsSection>
-        <p>Lorem ipsum</p>
-        <p>Lorem ipsum</p>
-        <p>Lorem ipsum</p>
-        <p>Lorem ipsum</p>
-        <p>Lorem ipsum</p>
-      </NewsSection>
+      <NewsSection />
     </Wrapper>
   );
 };

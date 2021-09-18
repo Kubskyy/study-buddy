@@ -13,9 +13,10 @@ export const Wrapper = styled.div`
   overflow-y: scroll;
 `;
 
-export const NewSectionHeader = styled.h3`
+export const NewsSectionHeader = styled.h3`
   margin-right: auto;
   color: ${({ theme }) => theme.colors.darkGrey};
+  font-size: ${({ theme }) => theme.fontSize.xl};
 `;
 
 export const ArticleWrapper = styled(ViewWrapper)`
@@ -38,5 +39,14 @@ export const TitleWrapper = styled.div`
   p {
     margin: 0;
     font-size: ${({ theme }) => theme.fontSize.m};
+  }
+`;
+
+export const ContentWrapper = styled.div`
+  display: flex;
+  img {
+    max-width: 200px;
+    object-fit: cover;
+    margin-left: 35px;
   }
 `;
