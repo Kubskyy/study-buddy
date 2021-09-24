@@ -14,5 +14,5 @@ export const ModalWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 50px;
+  padding: 40px 50px;
 `;

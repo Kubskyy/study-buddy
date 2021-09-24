@@ -15,6 +15,21 @@ const Template = (args) => (
         attendance: '78%',
         average: '3.5',
         group: 'C',
+        course: 'Economy and finances',
+        grades: [
+          {
+            subject: 'Business Philosophy',
+            average: '3.3',
+          },
+          {
+            subject: 'Marketing',
+            average: '4.7',
+          },
+          {
+            subject: 'Modern Economy',
+            average: '2.5',
+          },
+        ],
       }}
     />
   </Modal>
