@@ -6,15 +6,38 @@ import { useStudents } from 'hooks/useStudents';
 import { GroupWrapper, TitleWrapper, Wrapper } from 'views/Dashboard.styles';
 import { Title } from 'components/atoms/Title/Title';
 import useModal from 'components/organisms/Modal/useModal';
-import { StyledAverage } from 'components/molecules/StudentsListItem/StudentsListItem.styles';
 import StudentDetails from 'components/molecules/StudentDetails/StudentDetails';
+import Modal from 'components/organisms/Modal/Modal';
+
+const mockStudent = {
+  id: '15',
+  name: 'Marek Ratajski',
+  attendance: '78%',
+  average: '3.5',
+  group: 'C',
+  course: 'Economy and finances',
+  grades: [
+    {
+      subject: 'Business Philosophy',
+      average: '3.3',
+    },
+    {
+      subject: 'Marketing',
+      average: '4.7',
+    },
+    {
+      subject: 'Modern Economy',
+      average: '2.5',
+    },
+  ],
+};
 
 const Dashboard = () => {
   const [groups, setGroups] = useState([]);
   const [currentStudent, setCurrentStudent] = useState([]);
   const { id } = useParams();
   const { getGroups, getStudentById } = useStudents();
-  const { Modal, isOpen, handleCloseModal, handleOpenModal } = useModal();
+  const { isOpen, handleCloseModal, handleOpenModal } = useModal();
 
   useEffect(() => {
     (async () => {
@@ -45,11 +68,9 @@ const Dashboard = () => {
       </TitleWrapper>
       <GroupWrapper>
         <StudentsList handleOpenStudentDetails={handleOpenStudentDetails} />
-        {isOpen ? (
-          <Modal handleCloseModal={handleCloseModal}>
-            <StudentDetails student={currentStudent} />
-          </Modal>
-        ) : null}
+        <Modal isOpen={isOpen} handleCloseModal={handleCloseModal}>
+          <StudentDetails student={mockStudent} />
+        </Modal>
       </GroupWrapper>
     </Wrapper>
   );
