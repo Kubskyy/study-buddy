@@ -49,7 +49,7 @@ export const db = factory({
   teacher: {
     id: primaryKey(() => '1'),
     name: () => 'Jacek Sobczak',
-    login: () => 'sobczak@studybuddy.com',
-    password: () => '123',
+    login: () => 'test@studybuddy.com',
+    password: () => 'Test123',
   },
 });

@@ -1,7 +1,6 @@
 import { setupWorker } from 'msw';
 import { handlers } from './handlers';
 import { db } from 'mocks/db';
-import faker from 'faker';
 
 export const worker = setupWorker(...handlers);
 
@@ -20,7 +19,7 @@ const seed = () => {
     db.event.create();
   }
 };
-
+db.teacher.create();
 seed();
 
 window.mocks = {
