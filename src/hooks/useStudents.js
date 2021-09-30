@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
 import axios from 'axios';
+import { useError } from 'hooks/useError';
 
 const studentsAPI = axios.create({});
 
@@ -19,12 +20,13 @@ studentsAPI.interceptors.request.use(
 );
 
 export const useStudents = () => {
+  const { dispatchError } = useError();
   const getGroups = useCallback(async () => {
     try {
       const result = await studentsAPI.get('/groups');
       return result.data.groups;
     } catch (e) {
-      console.log(e);
+      dispatchError('Unable to fetch group');
     }
   }, []);
 
@@ -33,7 +35,7 @@ export const useStudents = () => {
       const result = await studentsAPI.get(`/students/${studentId}`);
       return result.data.students;
     } catch (e) {
-      console.log(e);
+      dispatchError('Unable to fetch students');
     }
   });
 
@@ -42,7 +44,7 @@ export const useStudents = () => {
       const result = await axios.get(`/groups/${groupId}`);
       return result.data.students;
     } catch (e) {
-      console.log(e);
+      dispatchError('Unable to fetch students in group');
     }
   }, []);
 
@@ -53,7 +55,7 @@ export const useStudents = () => {
       });
       return data;
     } catch (e) {
-      console.log(e);
+      dispatchError('There are no particular students');
     }
   };
 
