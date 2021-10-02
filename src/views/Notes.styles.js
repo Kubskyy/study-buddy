@@ -30,4 +30,5 @@ export const NotesWrapper = styled.div`
   padding: 20px 60px;
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;

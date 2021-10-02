@@ -11,6 +11,7 @@ import {
   StyledFormField,
   Wrapper,
 } from 'views/Notes.styles';
+import { Title } from 'components/atoms/Title/Title';
 
 const Notes = () => {
   const notes = useSelector((state) => state.notes);
@@ -65,7 +66,7 @@ const Notes = () => {
             <Note id={id} key={id} title={title} content={content} />
           ))
         ) : (
-          <p>Create your first note</p>
+          <Title>Create your first note</Title>
         )}
       </NotesWrapper>
     </Wrapper>
