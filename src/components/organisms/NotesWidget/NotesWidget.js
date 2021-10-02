@@ -6,6 +6,7 @@ import {
   WidgetHandler,
   Wrapper,
 } from 'components/organisms/NotesWidget/NotesWidget.styles';
+import { Title } from 'components/atoms/Title/Title';
 
 const NotesWidget = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -22,7 +23,7 @@ const NotesWidget = () => {
             <Note id={id} key={id} title={title} content={content} />
           ))
         ) : (
-          <p>Create your first note</p>
+          <Title>Create your first note</Title>
         )}
       </NotesWrapper>
     </Wrapper>
