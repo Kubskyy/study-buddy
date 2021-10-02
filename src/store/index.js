@@ -19,13 +19,7 @@ export const removeNote = (payload) => {
 };
 
 const initialState = {
-  notes: [
-    {
-      id: uuid(),
-      title: 'Lorem ipsum',
-      content: 'Lorem ipsum dolor sit amet',
-    },
-  ],
+  notes: [],
 };
 
 const notesReducer = (state = initialState, action) => {
