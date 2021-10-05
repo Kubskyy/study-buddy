@@ -2,8 +2,7 @@ import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Button } from 'components/atoms/Button/Button';
 import Note from 'components/molecules/Note/Note';
-import { useDispatch, useSelector } from 'react-redux';
-import { addNote } from 'store';
+import { useAddNoteMutation, useGetNotesQuery } from 'store';
 
 import {
   FormWrapper,
@@ -14,14 +13,15 @@ import {
 import { Title } from 'components/atoms/Title/Title';
 
 const Notes = () => {
-  const notes = useSelector((state) => state.notes);
-  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
   } = useForm();
+
+  const { data, isLoading } = useGetNotesQuery();
+  const [addNote] = useAddNoteMutation();
 
   useEffect(() => {
     setTimeout(() => {
@@ -33,13 +33,7 @@ const Notes = () => {
   }, [reset]);
 
   const handleAddNote = ({ title, content }) => {
-    console.log(title, content);
-    dispatch(
-      addNote({
-        title,
-        content,
-      })
-    );
+    addNote({ title, content });
   };
 
   return (
@@ -60,15 +54,19 @@ const Notes = () => {
         />
         <Button type="submit">Add</Button>
       </FormWrapper>
-      <NotesWrapper>
-        {notes.length ? (
-          notes.map(({ title, content, id }) => (
-            <Note id={id} key={id} title={title} content={content} />
-          ))
-        ) : (
-          <Title>Create your first note</Title>
-        )}
-      </NotesWrapper>
+      {isLoading ? (
+        <h2>Loading...</h2>
+      ) : (
+        <NotesWrapper>
+          {data.notes.length ? (
+            data.notes.map(({ title, content, id }) => (
+              <Note id={id} key={id} title={title} content={content} />
+            ))
+          ) : (
+            <p>Create your first note</p>
+          )}
+        </NotesWrapper>
+      )}
     </Wrapper>
   );
 };
