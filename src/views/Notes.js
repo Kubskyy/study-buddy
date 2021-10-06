@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Button } from 'components/atoms/Button/Button';
 import Note from 'components/molecules/Note/Note';
-import { useAddNoteMutation, useGetNotesQuery } from 'store';
+import { useAddNoteMutation, useGetNotesQuery } from 'store/api/notes';
 
 import {
   FormWrapper,
@@ -10,7 +10,6 @@ import {
   StyledFormField,
   Wrapper,
 } from 'views/Notes.styles';
-import { Title } from 'components/atoms/Title/Title';
 
 const Notes = () => {
   const {

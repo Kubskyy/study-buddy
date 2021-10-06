@@ -1,12 +1,11 @@
 import React from 'react';
 import Note from 'components/molecules/Note/Note';
-import { useGetNotesQuery } from 'store';
+import { useGetNotesQuery } from 'store/api/notes';
 import {
   NotesWrapper,
   WidgetHandler,
   Wrapper,
 } from 'components/organisms/NotesWidget/NotesWidget.styles';
-import { Title } from 'components/atoms/Title/Title';
 
 const NotesWidget = () => {
   const [isOpen, setIsOpen] = React.useState(false);
